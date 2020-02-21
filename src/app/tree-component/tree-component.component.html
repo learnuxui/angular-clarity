@@ -1,0 +1,42 @@
+<!-- <clr-tree>
+    <clr-tree-node *ngFor="let group of inventoty"
+                   [(clrSelected)]="group.selected"
+                   [clrExpanded]="true">
+        {{group.lable}}
+        <clr-tree-node *ngFor="let DC of group.items" [(clrSelected)]="DC.selected">
+            {{DC.lable}}
+            <clr-tree-node *ngFor="let CLUSTER of DC.items" [(clrSelected)]="CLUSTER.selected">
+                {{CLUSTER.lable}}
+                <clr-tree-node *ngFor="let HOST of CLUSTER.items" [(clrSelected)]="HOST.selected">
+                    {{HOST.lable}}
+                </clr-tree-node>
+            </clr-tree-node>
+        </clr-tree-node>
+    </clr-tree-node>
+</clr-tree> -->
+
+
+
+    
+        
+        
+        <select clrSelect (change)="onChange($event)">
+            <option>Select</option>
+            <option *ngFor="let data of inventoty" [value]="data.id">{{data.lable}}</option>
+        </select>
+        <!-- <select [(ngModel)]="treeData">
+            <option>Select</option>
+            <option *ngFor="let data of inventoty" [ngValue]="data.items">{{data.lable}}</option>
+        </select>
+ -->
+ {{treeData | json}}
+<clr-tree>
+    <clr-tree-node *ngFor="let CLUSTER of treeData"
+                   [(clrSelected)]="CLUSTER.selected"
+                   [clrExpanded]="true">
+        {{CLUSTER.lable}}
+        <clr-tree-node *ngFor="let HOST of CLUSTER.items" [(clrSelected)]="HOST.selected">
+            {{HOST.lable}}
+        </clr-tree-node>
+    </clr-tree-node>
+</clr-tree>
